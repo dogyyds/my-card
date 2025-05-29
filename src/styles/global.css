@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* 优化全局滚动和背景设置，但移除黑色背景 */
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* 防止横向滚动和白边 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* 移除黑色背景设置 */
+    background-color: transparent;
+  }
+
+  html {
+    overflow-y: auto;
+  }
+
+  body {
+    @apply text-text-light-primary dark:text-text-dark-primary min-h-screen;
+    position: relative;
+  }
+
+  /* 背景色层 - 无模糊效果 */
+  body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -2; /* 降低 z-index，让背景图片在上层 */
+    background-color: rgba(215, 227, 241, 0.7); /* 浅色模式背景 */
+    /* 移除模糊效果 */
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* 深色模式下背景完全透明 */
+  body.dark::after {
+    background-color: rgba(0, 0, 0, 0); /* 完全透明 */
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-medium;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  h3 {
+    @apply text-lg;
+  }
+
+  a {
+    @apply text-primary hover:text-primary-light transition-colors duration-200;
+  }
+
+  /* 优化全局滚动和背景设置 */
+  html,
+  body,
+  #root {
+    max-width: 100%;
+    overflow-x: hidden; /* 防止横向滚动和白边 */
+  }
+}
+
+@layer components {
+  /* 卡片效果，移除模糊 */
+  .glass-card {
+    @apply bg-white/30 dark:bg-black/40 rounded-xl border border-white/10 dark:border-white/5;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    /* 移除模糊效果 */
+  }
+
+  /* 更强的卡片效果，无模糊 */
+  .glass-card-stronger {
+    @apply bg-white/40 dark:bg-black/50;
+  }
+
+  /* 简化按钮效果 */
+  .glass-button {
+    @apply bg-white/20 dark:bg-black/20 rounded-full;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+  }
+  .glass-button:hover {
+    transform: scale(1.05);
+  }
+  .glass-button:active {
+    transform: scale(0.95);
+  }
+
+  .glass-button.active {
+    @apply bg-primary text-white;
+  }
+
+  /* Vision Pro 风格的标签 */
+  .visionpro-tag {
+    @apply inline-flex text-xs px-2.5 py-0.5 rounded-full bg-white/20 dark:bg-white/10 text-gray-600 dark:text-gray-300;
+  }
+
+  /* macOS 风格的自定义滚动条 */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gray-300/30 dark:bg-gray-700/30 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400/50 dark:bg-gray-600/50;
+  }
+
+  /* macOS 风格的阴影效果 */
+  .macos-shadow {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05),
+      0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+  }
+
+  /* 动画延迟工具类 */
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+
+  /* 提高滚动区域的性能 */
+  .smooth-scroll {
+    /* 移除这个属性，它会导致滚动卡顿 */
+    /* scroll-behavior: smooth; */
+    -webkit-overflow-scrolling: touch;
+    /* 添加硬件加速 */
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* 修正内容容器样式 */
+  .content-container {
+    position: relative;
+    /* 移除固定高度，改为使用父容器控制 */
+    /* 允许正常滚动 */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
+  }
+
+  /* 自定义滚动条样式 */
+  .content-container::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .content-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .content-container::-webkit-scrollbar-thumb {
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 20px;
+  }
+
+  /* 移除不需要的滚动箭头样式 */
+  .scroll-arrow {
+    display: none;
+  }
+
+  /* 确保 no-scrollbar 类能正确隐藏滚动条 */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+    width: 0;
+    background: transparent;
+  }
+
+  /* 深色模式下增强卡片对比度，确保内容可见 */
+  .dark .glass-card {
+    @apply bg-black/40 border-white/10;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  /* 更强的卡片效果 */
+  .dark .glass-card-stronger {
+    @apply bg-black/50;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+@layer utilities {
+  /* 添加解决白条问题的工具类 */
+  .no-horizontal-overflow {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
