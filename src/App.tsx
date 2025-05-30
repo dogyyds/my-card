@@ -21,7 +21,7 @@ const App: React.FC = () => {
   useEffect(() => {
     // 预加载背景图和第一个项目图片
     const preloadImages = [
-      "/background-light.webp",
+      // "/background-light.webp",
       "/background-dark.webp",
       projectsData[0]?.imageUrl,
     ].filter(Boolean);
@@ -52,8 +52,6 @@ const App: React.FC = () => {
     };
 
     // 检查背景图片
-    checkImageExists("background-light.webp");
-    checkImageExists("background-dark.webp");
     checkImageExists("/background-light.webp");
     checkImageExists("/background-dark.webp");
   }, []);
@@ -123,23 +121,31 @@ const App: React.FC = () => {
         />
       </Helmet>
 
-      {/* 优化背景图片的显示方式 */}
+      {/* 背景: 深色模式使用图片，浅色模式使用背景色 */}
       <div className="fixed inset-0 z-[-1] overflow-hidden">
-        <img
-          src={
-            theme === "dark" ? "background-dark.webp" : "background-light.webp"
-          }
-          alt=""
-          className="absolute w-[120%] h-[120%] object-cover"
-          style={{
-            left: "-10%",
-            top: "-10%",
-            transform: "translateZ(0)",
-            willChange: "transform",
-            minWidth: "120vw",
-            minHeight: "120vh",
-          }}
-        />
+        {theme === "dark" ? (
+          <img
+            src="background-dark.webp"
+            alt=""
+            className="absolute w-[120%] h-[120%] object-cover"
+            style={{
+              left: "-10%",
+              top: "-10%",
+              transform: "translateZ(0)",
+              willChange: "transform",
+              minWidth: "120vw",
+              minHeight: "120vh",
+            }}
+          />
+        ) : (
+          <div
+            className="absolute inset-0 bg-[#f0f4f8]"
+            style={{
+              minWidth: "100vw",
+              minHeight: "100vh",
+            }}
+          />
+        )}
       </div>
 
       <MainLayout
