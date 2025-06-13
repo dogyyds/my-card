@@ -69,7 +69,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     );
   }
 
-  // 桌面布局 - Vision Pro 风格的三栏
+  // 桌面布局 - 极简 风格的三栏
   return (
     <div className="min-h-screen p-10 overflow-x-hidden flex flex-col">
       <header className="flex justify-end mb-8 sticky top-4 z-10 py-2 px-4 bg-white/10 dark:bg-black/15 backdrop-blur-md rounded-full max-w-fit ml-auto">

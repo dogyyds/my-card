@@ -4,7 +4,7 @@ export const projectsData: Project[] = [
     {
         id: 'mycard',
         title: 'MyCard',
-        description: 'Vision Pro 风格的个人主页，采用现代化前端技术栈构建，具有磨砂玻璃UI和流畅动效。',
+        description: '极简 风格的个人主页，采用现代化前端技术栈构建，具有磨砂玻璃UI和流畅动效。',
         // imageUrl: '/projects/mycard.jpg',
         tags: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
         links: {

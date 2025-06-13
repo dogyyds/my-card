@@ -108,7 +108,7 @@
     @apply bg-primary text-white;
   }
 
-  /* Vision Pro 风格的标签 */
+  /* 极简 风格的标签 */
   .visionpro-tag {
     @apply inline-flex text-xs px-2.5 py-0.5 rounded-full bg-white/20 dark:bg-white/10 text-gray-600 dark:text-gray-300;
   }

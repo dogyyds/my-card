@@ -1,10 +1,10 @@
-# MyCard - Vision Pro 风格个人主页
+# MyCard - 极简 风格个人主页
 
-一个采用 Vision Pro 设计风格的现代化个人主页网站，使用 React、TypeScript 和 Tailwind CSS 构建。
+一个采用 极简 设计风格的现代化个人主页网站，使用 React、TypeScript 和 Tailwind CSS 构建。
 
 ## 特性
 
-- 🎨 Vision Pro 风格的 UI 设计 - 磨砂玻璃效果、圆形按钮组
+- 🎨 极简 风格的 UI 设计 - 磨砂玻璃效果、圆形按钮组
 - 🌓 深色/浅色主题支持 - 自动适应系统主题
 - 📱 完全响应式设计 - 在任何设备上都能完美展示
 - ✨ 流畅动画效果 - 使用 Framer Motion 实现
@@ -95,4 +95,4 @@ MIT
 
 ---
 
-Inspired by Apple Vision Pro UI design.
+Inspired by Apple 极简 UI design.
